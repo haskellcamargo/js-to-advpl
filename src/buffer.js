@@ -5,15 +5,15 @@ const SPACES_RE = /^[ \t]+$/;
 export default class Buffer {
     constructor(map) {
         this._map = map;
-        _buf = [];
-        _last = "";
-        _queue = [];
+        this._buf = [];
+        this._last = "";
+        this._queue = [];
 
-        _position = {
+        this._position = {
             line: 1,
             column: 0,
         };
-        _sourcePosition = {
+        this._sourcePosition = {
             identifierName: null,
             line: null,
             column: null,
