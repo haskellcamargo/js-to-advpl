@@ -1,0 +1,28 @@
+{
+  "name": "js-to-advpl",
+  "version": "0.1.0",
+  "description": "A JS to AdvPL compiler",
+  "main": "index.js",
+  "repository": "https://github.com/haskellcamargo/js-to-advpl.git",
+  "author": "Marcelo Haskell Camargo <marcelocamargo@linuxmail.org>",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel ./src -d ./dist"
+  },
+  "dependencies": {
+    "babylon": "6.18.0",
+    "colors": "^1.1.2",
+    "fluture": "7.1.2",
+    "ramda": "0.24.1",
+    "yargs": "8.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.0",
+    "babel-plugin-pipe-operator-curry": "1.0.2",
+    "babel-plugin-transform-scala-lambda": "1.0.0",
+    "babel-preset-es2015": "6.24.1",
+    "chai": "4.1.1",
+    "mocha": "3.5.0"
+  }
+}
