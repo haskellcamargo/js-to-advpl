@@ -504,7 +504,6 @@ for (const generator of [
         require("./generators/methods"),
         require("./generators/modules"),
         require("./generators/types"),
-        require("./generators/flow"),
         require("./generators/base"),
         require("./generators/jsx")
     ]) {
