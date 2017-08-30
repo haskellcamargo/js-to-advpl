@@ -5,23 +5,21 @@ const SPACES_RE = /^[ \t]+$/;
 export default class Buffer {
     constructor(map) {
         this._map = map;
+        _buf = [];
+        _last = "";
+        _queue = [];
+
+        _position = {
+            line: 1,
+            column: 0,
+        };
+        _sourcePosition = {
+            identifierName: null,
+            line: null,
+            column: null,
+            filename: null,
+        };
     }
-
-    _map = null;
-    _buf = [];
-    _last = "";
-    _queue = [];
-
-    _position = {
-        line: 1,
-        column: 0,
-    };
-    _sourcePosition = {
-        identifierName: null,
-        line: null,
-        column: null,
-        filename: null,
-    };
 
     get() {
         this._flush();
