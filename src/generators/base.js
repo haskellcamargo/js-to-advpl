@@ -12,14 +12,14 @@ export function Program(node) {
 }
 
 export function BlockStatement(node) {
-    this.token("{");
     this.printInnerComments(node);
+
+    this.printSequence(node.body, node, { indent: true });
+    return;
 
     const hasDirectives = node.directives && node.directives.length;
 
     if (node.body.length || hasDirectives) {
-        this.newline();
-
         this.printSequence(node.directives, node, {
             indent: true
         });
@@ -37,7 +37,6 @@ export function BlockStatement(node) {
         this.rightBrace();
     } else {
         this.source("end", node.loc);
-        this.token("}");
     }
 }
 

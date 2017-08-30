@@ -78,7 +78,7 @@ export function _functionHead(node) {
         this.word("async");
         this.space();
     }
-    this.word("function");
+    this.word("Function");
     if (node.generator) this.token("*");
 
     this.space();

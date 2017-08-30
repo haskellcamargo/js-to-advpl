@@ -17,19 +17,20 @@ export {
 export function ObjectExpression(node) {
     const props = node.properties;
 
-    this.token("{");
+    this.word("aToHM");
+    this.token('(');
+    this.token('{');
     this.printInnerComments(node);
 
     if (props.length) {
-        this.space();
         this.printList(props, node, {
             indent: true,
             statement: true
         });
-        this.space();
     }
 
-    this.token("}");
+    this.token('}');
+    this.token(")");
 }
 
 export {
@@ -45,6 +46,8 @@ export function ObjectMethod(node) {
 
 export function ObjectProperty(node) {
     this.printJoin(node.decorators, node);
+    this.token('{');
+    this.token("'");
 
     if (node.computed) {
         this.token("[");
@@ -74,16 +77,18 @@ export function ObjectProperty(node) {
         }
     }
 
-    this.token(":");
+    this.token("'");
+    this.token(",");
     this.space();
     this.print(node.value, node);
+    this.token('}');
 }
 
 export function ArrayExpression(node) {
     const elems = node.elements;
     const len = elems.length;
 
-    this.token("[");
+    this.token("{");
     this.printInnerComments(node);
 
     for (let i = 0; i < elems.length; i++) {
@@ -102,7 +107,7 @@ export function ArrayExpression(node) {
         }
     }
 
-    this.token("]");
+    this.token("}");
 }
 
 export {
@@ -110,15 +115,15 @@ export {
 };
 
 export function RegExpLiteral(node) {
-    this.word(`/${node.pattern}/${node.flags}`);
+    throw new TypeError('Regexes are still not supported');
 }
 
 export function BooleanLiteral(node) {
-    this.word(node.value ? "true" : "false");
+    this.word(node.value ? ".T." : ".F.");
 }
 
 export function NullLiteral() {
-    this.word("null");
+    this.word("Nil");
 }
 
 export function NumericLiteral(node) {

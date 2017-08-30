@@ -10,35 +10,16 @@ export function WithStatement(node) {
 }
 
 export function IfStatement(node) {
-    this.word("if");
+    this.word("If");
     this.space();
-    this.token("(");
     this.print(node.test, node);
-    this.token(")");
     this.space();
-
-    const needsBlock =
-        node.alternate && t.isIfStatement(getLastStatement(node.consequent));
-    if (needsBlock) {
-        this.token("{");
-        this.newline();
-        this.indent();
-    }
+    this.indent();
 
     this.printAndIndentOnComments(node.consequent, node);
 
-    if (needsBlock) {
-        this.dedent();
-        this.newline();
-        this.token("}");
-    }
-
-    if (node.alternate) {
-        if (this.endsWith("}")) this.space();
-        this.word("else");
-        this.space();
-        this.printAndIndentOnComments(node.alternate, node);
-    }
+    this.dedent();
+    this.word('EndIf');
 }
 
 // Recursively get the last statement.
@@ -134,7 +115,7 @@ function buildLabelStatement(prefix, key = "label") {
 }
 
 export const ContinueStatement = buildLabelStatement("continue");
-export const ReturnStatement = buildLabelStatement("return", "argument");
+export const ReturnStatement = buildLabelStatement("Return", "argument");
 export const BreakStatement = buildLabelStatement("break");
 export const ThrowStatement = buildLabelStatement("throw", "argument");
 
@@ -246,7 +227,7 @@ export function VariableDeclaration(node, parent) {
         this.space();
     }
 
-    this.word(node.kind);
+    this.word('Local');
     this.space();
 
     let hasInits = false;
@@ -299,7 +280,7 @@ export function VariableDeclarator(node) {
     this.print(node.id.typeAnnotation, node);
     if (node.init) {
         this.space();
-        this.token("=");
+        this.token(":=");
         this.space();
         this.print(node.init, node);
     }

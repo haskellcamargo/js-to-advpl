@@ -49,7 +49,7 @@ export default class Printer {
 
     semicolon(force = false) {
         this._maybeAddAuxComment();
-        this._append(";", !force /* queue */ );
+        // this._append(";", !force /* queue */ );
     }
 
     rightBrace() {

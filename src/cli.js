@@ -17,7 +17,7 @@ function cli(args) {
         .chain(Future.encase(parse(_, { sourceType: 'module' })))
         .chain(Future.encase(compileToAdvPL))
     return ast
-        .fork(emitError, console.log)
+        .fork(emitError, ({ code }) => console.log(code))
 }
 
 cli(yargs

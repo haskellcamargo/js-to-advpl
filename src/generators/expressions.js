@@ -168,6 +168,8 @@ export function AssignmentExpression(node, parent) {
     this.space();
     if (node.operator === "in" || node.operator === "instanceof") {
         this.word(node.operator);
+    } else if (node.operator === '===') {
+        this.token('==');
     } else {
         this.token(node.operator);
     }
