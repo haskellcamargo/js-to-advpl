@@ -14,7 +14,8 @@
     "colors": "1.1.2",
     "fluture": "7.1.2",
     "ramda": "0.24.1",
-    "source-map": "^0.5.7",
+    "source-map": "0.5.7",
+    "trim-right": "1.0.1",
     "yargs": "8.0.2"
   },
   "devDependencies": {
